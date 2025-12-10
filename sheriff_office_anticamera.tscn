@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=3 uid="uid://byg4y1m5jed00"]
+
+[ext_resource type="Texture2D" uid="uid://gkwa730ah4nw" path="res://sheriff_office_anticamera.png" id="1_o4bga"]
+[ext_resource type="Texture2D" uid="uid://dl82gdlabi185" path="res://Assets/Sprites/lucy.png" id="2_t6yof"]
+[ext_resource type="Texture2D" uid="uid://cyjuqlbxthfpr" path="res://Assets/Sprites/alex.png" id="3_xkik3"]
+[ext_resource type="Script" path="res://Hotspot_Glassa.gd" id="4_vuaxc"]
+[ext_resource type="Texture2D" uid="uid://btgwqups51npf" path="res://Assets/Sprites/glassa.png" id="5_8jqhp"]
+[ext_resource type="Script" path="res://Hotspot_SediaLucy.gd" id="6_7cccr"]
+[ext_resource type="Texture2D" uid="uid://b0y03vl5foskd" path="res://Assets/Sprites/sedia.png" id="6_qlaf7"]
+[ext_resource type="Script" path="res://Hotspot_Libreria.gd" id="8_87j5x"]
+[ext_resource type="Script" path="res://Hotspot_Porta_Ufficio.gd" id="9_wsied"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66kw6"]
+size = Vector2(63.5, 119.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ruoo"]
+size = Vector2(30, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t2ya"]
+size = Vector2(74, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4utdd"]
+size = Vector2(74, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxygj"]
+size = Vector2(120, 80)
+
+[node name="SheriffOfficeAnticamera" type="Node2D"]
+
+[node name="Sfondo" type="Sprite2D" parent="."]
+position = Vector2(321, 182.5)
+scale = Vector2(0.621094, 0.348633)
+texture = ExtResource("1_o4bga")
+
+[node name="Lucy_Moran" type="Sprite2D" parent="."]
+position = Vector2(160.125, 177.625)
+scale = Vector2(0.095459, 0.08667)
+texture = ExtResource("2_t6yof")
+
+[node name="Alex" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alex"]
+position = Vector2(517.25, 269.875)
+shape = SubResource("RectangleShape2D_66kw6")
+
+[node name="AlexSprite" type="Sprite2D" parent="Alex/CollisionShape2D"]
+position = Vector2(13.75, -18.875)
+scale = Vector2(0.0976562, 0.0996908)
+texture = ExtResource("3_xkik3")
+
+[node name="Hotspot_Glassa" type="Area2D" parent="."]
+script = ExtResource("4_vuaxc")
+
+[node name="Glassa_Sprite" type="Sprite2D" parent="Hotspot_Glassa"]
+position = Vector2(403, 250)
+scale = Vector2(0.0240478, 0.0161132)
+texture = ExtResource("5_8jqhp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Glassa"]
+position = Vector2(403, 251)
+shape = SubResource("RectangleShape2D_1ruoo")
+
+[node name="Hotspot_SediaLucy" type="Area2D" parent="."]
+script = ExtResource("6_7cccr")
+
+[node name="Sedia_SPrite" type="Sprite2D" parent="Hotspot_SediaLucy"]
+position = Vector2(231, 288)
+scale = Vector2(0.0712891, 0.0820312)
+texture = ExtResource("6_qlaf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_SediaLucy"]
+position = Vector2(232, 286)
+shape = SubResource("RectangleShape2D_1t2ya")
+
+[node name="Hotspot_Libreria" type="Area2D" parent="."]
+script = ExtResource("8_87j5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Libreria"]
+position = Vector2(314, 279.5)
+shape = SubResource("RectangleShape2D_4utdd")
+
+[node name="Hotspot_Porta_Ufficio" type="Area2D" parent="."]
+script = ExtResource("9_wsied")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Porta_Ufficio"]
+position = Vector2(282, 136)
+shape = SubResource("RectangleShape2D_sxygj")

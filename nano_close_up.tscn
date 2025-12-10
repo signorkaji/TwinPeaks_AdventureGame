@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgc04qx3vhmea"]
+
+[ext_resource type="Script" path="res://nano_close_up.gd" id="1_6lrol"]
+[ext_resource type="Texture2D" uid="uid://dsxvri8bbjjbt" path="res://Assets/Sprites/nano_closeup.png" id="1_ltivx"]
+[ext_resource type="Texture2D" uid="uid://hvnracvvpbl4" path="res://Assets/Sprites/nano_parla1.png" id="3_dmlnr"]
+[ext_resource type="Texture2D" uid="uid://dd72ivbjh1fnv" path="res://Assets/Sprites/nano_parla2.png" id="4_uuib7"]
+[ext_resource type="Texture2D" uid="uid://c21n2vcjsm575" path="res://Assets/Sprites/nano_parla3.png" id="5_wsjdu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x85gc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dmlnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uuib7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wsjdu")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 5.0
+}]
+
+[node name="Nano_CloseUp" type="Node2D"]
+script = ExtResource("1_6lrol")
+
+[node name="Sfondo_Nano" type="Sprite2D" parent="."]
+position = Vector2(315, 178)
+scale = Vector2(0.386719, 0.341797)
+texture = ExtResource("1_ltivx")
+
+[node name="Nano_Mouth" type="AnimatedSprite2D" parent="."]
+position = Vector2(317.75, 175.75)
+scale = Vector2(0.379395, 0.338379)
+sprite_frames = SubResource("SpriteFrames_x85gc")
+animation = &"speak"
+frame_progress = 0.80634

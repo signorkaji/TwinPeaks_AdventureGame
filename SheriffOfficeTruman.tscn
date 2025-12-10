@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://clcdki440h5jx"]
+
+[ext_resource type="Texture2D" uid="uid://clxwxhdj7x78q" path="res://sfondo_ufficio.png" id="1_kfmqa"]
+[ext_resource type="Texture2D" uid="uid://cfc2otwk4qtky" path="res://Assets/Sprites/andy.png" id="2_eqp8q"]
+[ext_resource type="Texture2D" uid="uid://dx30iu2tgjgnq" path="res://Assets/Sprites/uovo.png" id="3_2wjb5"]
+[ext_resource type="Script" path="res://Hotspot_Uovo.gd" id="3_w37cx"]
+[ext_resource type="Script" path="res://Hotspot_Fascicolo.gd" id="5_pkh4v"]
+[ext_resource type="Texture2D" uid="uid://cyjuqlbxthfpr" path="res://Assets/Sprites/alex.png" id="5_ujii1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruvhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7qir"]
+size = Vector2(34, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kku2"]
+size = Vector2(51, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bc50"]
+size = Vector2(70.5, 128.5)
+
+[node name="SheriffOfficeTruman" type="Node2D"]
+
+[node name="Sfondo_Ufficio" type="Sprite2D" parent="."]
+position = Vector2(319, 180)
+scale = Vector2(0.620117, 0.348633)
+texture = ExtResource("1_kfmqa")
+
+[node name="Hotspot_Andy" type="Area2D" parent="."]
+
+[node name="Andy_Sprite" type="Sprite2D" parent="Hotspot_Andy"]
+position = Vector2(133, 281)
+scale = Vector2(0.0922851, 0.0979818)
+texture = ExtResource("2_eqp8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Andy"]
+shape = SubResource("RectangleShape2D_ruvhe")
+
+[node name="Hotspot_Uovo" type="Area2D" parent="."]
+script = ExtResource("3_w37cx")
+
+[node name="Uovo_Sprite" type="Sprite2D" parent="Hotspot_Uovo"]
+position = Vector2(381, 292)
+scale = Vector2(0.320937, 0.287251)
+texture = ExtResource("3_2wjb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Uovo"]
+position = Vector2(382, 291)
+shape = SubResource("RectangleShape2D_g7qir")
+
+[node name="Hotspot_Fascicolo" type="Area2D" parent="."]
+position = Vector2(417, 313)
+script = ExtResource("5_pkh4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Fascicolo"]
+position = Vector2(-153.5, -16.5)
+shape = SubResource("RectangleShape2D_3kku2")
+
+[node name="Alex" type="CharacterBody2D" parent="."]
+
+[node name="Alex_Sprite" type="Sprite2D" parent="Alex"]
+position = Vector2(545, 274)
+scale = Vector2(0.0729981, 0.0947266)
+texture = ExtResource("5_ujii1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alex"]
+position = Vector2(546, 271)
+shape = SubResource("RectangleShape2D_8bc50")

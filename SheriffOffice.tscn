@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://1p0ku8r47dsy"]
+
+[ext_resource type="Texture2D" uid="uid://d4hkyrymvbqbn" path="res://sfondo_sheriff_office.png" id="1_552cg"]
+
+[node name="SheriffOffice" type="Node2D"]
+
+[node name="Sfondo" type="Sprite2D" parent="."]
+position = Vector2(319.5, 186)
+scale = Vector2(0.414714, 0.353516)
+texture = ExtResource("1_552cg")

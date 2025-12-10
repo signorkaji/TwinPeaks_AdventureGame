@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://uhia6ud3vl2p"]
+
+[ext_resource type="Texture2D" uid="uid://rokxir2f4yae" path="res://Assets/Sprites/loggia_nano_laura_closeup.png" id="1_0ti4m"]
+
+[node name="Nano_Laura_Wide" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(319, 185.5)
+scale = Vector2(0.414062, 0.352539)
+texture = ExtResource("1_0ti4m")

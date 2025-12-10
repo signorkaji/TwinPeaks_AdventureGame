@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cs2661oq8rvpy"]
+
+[ext_resource type="Texture2D" uid="uid://d0l0swhfjo8um" path="res://Assets/Sprites/drd_sfondo.jpg" id="1_ye2qw"]
+[ext_resource type="Texture2D" uid="uid://dk8g6g66wcfx8" path="res://Assets/Sprites/norma.png" id="2_8kxkv"]
+[ext_resource type="Texture2D" uid="uid://cptlsw0jlek0f" path="res://Assets/Sprites/shelley.png" id="3_ujqqw"]
+[ext_resource type="Script" path="res://Hotspot_Cenere.gd" id="4_dcoec"]
+[ext_resource type="Texture2D" uid="uid://xyrbcxnvlm5j" path="res://Assets/Sprites/cenere.png" id="4_snrlq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti8ix"]
+size = Vector2(199.3, 396.819)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpbbt"]
+size = Vector2(212.346, 439.674)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmf6d"]
+size = Vector2(45, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmooe"]
+size = Vector2(50, 35)
+
+[node name="DoubleRDiner" type="Node2D"]
+
+[node name="DrdSfondo" type="Sprite2D" parent="."]
+position = Vector2(317, 172)
+scale = Vector2(0.616211, 0.611966)
+texture = ExtResource("1_ye2qw")
+
+[node name="Hotspot_Norma" type="Area2D" parent="."]
+position = Vector2(79, 208)
+scale = Vector2(0.326142, 0.423367)
+
+[node name="Norma_Sprite" type="Sprite2D" parent="Hotspot_Norma"]
+texture = ExtResource("2_8kxkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Norma"]
+position = Vector2(1.53307, 3.05176e-05)
+shape = SubResource("RectangleShape2D_ti8ix")
+
+[node name="Hotspot_Shelley" type="Area2D" parent="."]
+position = Vector2(199.625, 247.625)
+scale = Vector2(0.282558, 0.370729)
+
+[node name="Shelley_SPrite" type="Sprite2D" parent="Hotspot_Shelley"]
+texture = ExtResource("3_ujqqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Shelley"]
+position = Vector2(1.32727, -0.337097)
+shape = SubResource("RectangleShape2D_bpbbt")
+
+[node name="Hotspot_Cenere" type="Area2D" parent="."]
+script = ExtResource("4_dcoec")
+
+[node name="Cenere_Sprite" type="Sprite2D" parent="Hotspot_Cenere"]
+position = Vector2(440, 225)
+scale = Vector2(4, 2.875)
+texture = ExtResource("4_snrlq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Cenere"]
+position = Vector2(437, 230)
+shape = SubResource("RectangleShape2D_nmf6d")
+
+[node name="Hotspot_Uscita" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_Uscita"]
+position = Vector2(574, 62.5)
+shape = SubResource("RectangleShape2D_tmooe")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4812s2tapbkh"]
+
+[ext_resource type="Texture2D" uid="uid://dkp6xwervjrfj" path="res://sfondo_mappa.jpg" id="1_bhtwg"]
+[ext_resource type="Script" path="res://MapScene.gd" id="1_pubqm"]
+
+[node name="MapScene" type="Node2D"]
+script = ExtResource("1_pubqm")
+
+[node name="Sfondo_mappa" type="Sprite2D" parent="."]
+position = Vector2(321.5, 181)
+scale = Vector2(0.624023, 0.349609)
+texture = ExtResource("1_bhtwg")
+
+[node name="LocationContiner" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

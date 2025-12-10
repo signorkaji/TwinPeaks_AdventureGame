@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://om74rdkx4vih"]
+
+[ext_resource type="Script" path="res://dialog_ui.gd" id="1_1vodr"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+script = ExtResource("1_1vodr")
+
+[node name="Sfondo_Box" type="ColorRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -60.0
+offset_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0, 0, 0.0666667, 0.615686)
+
+[node name="Dialog_Text" type="Label" parent="Sfondo_Box"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 0
+offset_right = 635.0
+offset_bottom = 74.0
+text = "Prova prova prova"
+vertical_alignment = 1
+autowrap_mode = 3
