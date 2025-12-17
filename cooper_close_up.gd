@@ -11,25 +11,28 @@ func _ready():
 		print("ERROR Global dialogue system not initialized.")
 		get_tree().quit()
 		return
+	await  get_tree().create_timer(0.05).timeout
 	start_cooper_reaction()
 
 
+	
 
 # reazione di cooper e passaggio alla scena di Laura e il nano (closeup)
 func start_cooper_reaction():
-	
-	
-	# forza l'attesa della renderizzazioone del dialogo
-	await get_tree().process_frame
-	
 	GlobalGame.show_line("Cooper", "?")
 	
-	#Attesa 
+	# CRUCIALE: Forziamo l'attesa di UN frame per garantire che la UI venga disegnata
+	# Questo stabilizza i riferimenti UI dopo il cambio di scena.
+	await get_tree().process_frame
+	
+	# 2. Attesa del tempo di reazione (la riga è visibile per 3.0 secondi)
 	await get_tree().create_timer(DURATA_RIGA_COOPER).timeout
 	
-	# leva la riga di dialogo
-	#GlobalGame.hide_line()
+	# 3. Transizione
+	# NON chiamiamo GlobalGame.hide_line() qui! La riga rimane visibile durante il cambio.
 	
+	# Transizione alla scena successiva (dopo l'attesa)
 	get_tree().change_scene_to_file(SCENA_NANO_LAURA_WIDE)
+	
 	
 	

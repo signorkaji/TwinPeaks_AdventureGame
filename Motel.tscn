@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv1o1smemevl2"]
+[gd_scene load_steps=10 format=3 uid="uid://cv1o1smemevl2"]
 
 [ext_resource type="Texture2D" uid="uid://ctkqjq4ma8ic6" path="res://Assets/Sprites/sfondo_motel.png" id="1_c3ycw"]
-[ext_resource type="Texture2D" uid="uid://cyjuqlbxthfpr" path="res://Assets/Sprites/alex.png" id="2_681ee"]
+[ext_resource type="Script" path="res://Motel.gd" id="1_trmjo"]
 [ext_resource type="Script" path="res://Hotspot_Finestra.gd" id="2_qg3pa"]
+[ext_resource type="PackedScene" uid="uid://cj3fbih0ahqnr" path="res://alex_character.tscn" id="2_y42of"]
 [ext_resource type="Script" path="res://Hotspot_Valigia.gd" id="3_o56ho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6hi"]
@@ -14,17 +15,19 @@ size = Vector2(135, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pl2ev"]
 size = Vector2(55, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qhom"]
+size = Vector2(617, 307)
+
 [node name="Motel_room" type="Node2D"]
+script = ExtResource("1_trmjo")
+
+[node name="Alex_Character" parent="." instance=ExtResource("2_y42of")]
+position = Vector2(296, 328)
 
 [node name="Sfondo" type="Sprite2D" parent="."]
 position = Vector2(320.5, 180)
 scale = Vector2(0.416016, 0.351562)
 texture = ExtResource("1_c3ycw")
-
-[node name="Alex" type="Sprite2D" parent="Sfondo"]
-position = Vector2(138.216, 99.5557)
-scale = Vector2(0.2723, 0.311112)
-texture = ExtResource("2_681ee")
 
 [node name="Hotspot_Finestra" type="Area2D" parent="."]
 script = ExtResource("2_qg3pa")
@@ -45,3 +48,9 @@ shape = SubResource("RectangleShape2D_vuaql")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_telefono"]
 position = Vector2(260.5, 192.5)
 shape = SubResource("RectangleShape2D_pl2ev")
+
+[node name="Wall_Obstacle" type="StaticBody2D" parent="."]
+
+[node name="Wall_bed_collision" type="CollisionShape2D" parent="Wall_Obstacle"]
+position = Vector2(312.5, 157.5)
+shape = SubResource("RectangleShape2D_4qhom")

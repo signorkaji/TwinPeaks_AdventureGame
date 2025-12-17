@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbm51fumlhxj1"]
+
+[ext_resource type="Script" path="res://test_room.gd" id="1_2ydsb"]
+[ext_resource type="PackedScene" uid="uid://cj3fbih0ahqnr" path="res://alex_character.tscn" id="2_aafhe"]
+
+[node name="Test_Room" type="Node2D"]
+script = ExtResource("1_2ydsb")
+
+[node name="Alex_Character" parent="." instance=ExtResource("2_aafhe")]
+position = Vector2(261, 108)

@@ -4,7 +4,7 @@ extends Area2D
 @export var window_audio_player: AudioStreamPlayer
 @export var lightning_animation_player: AnimationPlayer
 var looked_at_window  = false
-
+'''
 func _input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		if not looked_at_window:
@@ -27,3 +27,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+'''
