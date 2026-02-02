@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 200.0 # Velocità di camminata
 const STOPPING_DISTANCE = 5.0 # Distanza minima per considerare Alex arrivato
 const HORIZONTAL_CLAM_TOLERANCE = 20.0 # Se il click è entro questa distanza verticale, viene bloccato in orizzontale.
+const SPRITE_NODE_NAME = "Alex_Sprite"
+
 
 @onready var alex_sprite: AnimatedSprite2D = $Alex_Sprite
 var target_position: Vector2 # La destinazione dove Alex deve muoversi
@@ -18,6 +20,9 @@ func _ready():
 
 # Chiamato dalla scena di test (Motel_Room.gd) per impostare la destinazione
 func set_target(new_target: Vector2):
+	
+	
+	
 	# FIX: Se il click è quasi orizzontale (entro la tolleranza verticale),
 	# blocca la destinazione Y sulla posizione attuale di Alex (global_position.y).
 	var vertical_diff = abs(new_target.y - global_position.y)
@@ -38,9 +43,27 @@ func _physics_process(delta):
 		input_direction = (target_position - global_position).normalized()
 	else:
 		input_direction = Vector2.ZERO
-		
+	
+	# Salviamo la posizione PRIMA di muoverci
+	var previous_position = global_position
+	
 	apply_movement(delta)
+	
+	# --- CONTROLLO BLOCCAGGIO (STUCK CHECK) ---
+	# Se stavamo cercando di muoverci...
+	if input_direction != Vector2.ZERO:
+		# ...ma ci siamo mossi di pochissimo (es. meno di 0.5 pixel), significa che abbiamo sbattuto
+		var moved_distance = global_position.distance_to(previous_position)
+		
+		if moved_distance < 0.5:
+			# Abbiamo sbattuto contro un muro/letto!
+			# Fermiamo Alex resettando il target sulla posizione attuale
+			target_position = global_position
+			input_direction = Vector2.ZERO
+			# Questo fermerà l'animazione di camminata al prossimo frame
+			
 	update_animation()
+	
 
 func apply_movement(delta):
 	velocity = input_direction * SPEED

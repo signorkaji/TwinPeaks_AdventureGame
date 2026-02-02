@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://corl73ima1pr"]
+
+[ext_resource type="Script" path="res://tooltip_ui.gd" id="1_3fr4h"]
+
+[node name="TooltipUI" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_3fr4h")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.87451, 0.784314, 0.976471, 1)
+theme_override_constants/outline_size = 2

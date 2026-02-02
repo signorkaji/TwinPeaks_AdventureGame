@@ -1,13 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://cv1o1smemevl2"]
+[gd_scene load_steps=21 format=3 uid="uid://cv1o1smemevl2"]
 
 [ext_resource type="Texture2D" uid="uid://ctkqjq4ma8ic6" path="res://Assets/Sprites/sfondo_motel.png" id="1_c3ycw"]
 [ext_resource type="Script" path="res://Motel.gd" id="1_trmjo"]
 [ext_resource type="Script" path="res://Hotspot_Finestra.gd" id="2_qg3pa"]
 [ext_resource type="PackedScene" uid="uid://cj3fbih0ahqnr" path="res://alex_character.tscn" id="2_y42of"]
 [ext_resource type="Script" path="res://Hotspot_Valigia.gd" id="3_o56ho"]
+[ext_resource type="Texture2D" uid="uid://d5s1dr6jdcls" path="res://Assets/Sprites/motel/insegna_1.png" id="4_wsdgh"]
+[ext_resource type="Texture2D" uid="uid://cyg223i2p43nj" path="res://Assets/Sprites/motel/insegna_2.png" id="5_32frb"]
+[ext_resource type="Texture2D" uid="uid://cgdia2vuixkun" path="res://Assets/Sprites/motel/insegna_3.png" id="6_5h7j3"]
+[ext_resource type="Texture2D" uid="uid://bwnx3ljhxvpe4" path="res://Assets/Sprites/motel/foglio.png" id="6_xar5k"]
+[ext_resource type="Texture2D" uid="uid://t8abjexkhd1" path="res://Assets/Sprites/motel/phon_rotto.png" id="9_atssx"]
+[ext_resource type="Texture2D" uid="uid://dvkbggblkgv61" path="res://Assets/Sprites/motel/presa_rotta.png" id="11_vydir"]
+[ext_resource type="Texture2D" uid="uid://cpllep2ylth2p" path="res://Assets/Sprites/motel/zerbino_uscita_motel.png" id="12_8q7jc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ag6hi"]
 size = Vector2(100, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrufg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_32frb")
+}],
+"loop": true,
+"name": &"accesa_fissa",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wsdgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_32frb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5h7j3")
+}],
+"loop": true,
+"name": &"sfrigolio",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuaql"]
 size = Vector2(135, 34)
@@ -15,14 +47,19 @@ size = Vector2(135, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pl2ev"]
 size = Vector2(55, 31)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qhom"]
-size = Vector2(617, 307)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkqrb"]
+size = Vector2(26, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq8jj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uniu7"]
+size = Vector2(29.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obm5j"]
+size = Vector2(67, 35)
 
 [node name="Motel_room" type="Node2D"]
 script = ExtResource("1_trmjo")
-
-[node name="Alex_Character" parent="." instance=ExtResource("2_y42of")]
-position = Vector2(296, 328)
 
 [node name="Sfondo" type="Sprite2D" parent="."]
 position = Vector2(320.5, 180)
@@ -36,6 +73,12 @@ script = ExtResource("2_qg3pa")
 position = Vector2(126, 101.5)
 shape = SubResource("RectangleShape2D_ag6hi")
 
+[node name="Insegna_Neon" type="AnimatedSprite2D" parent="."]
+position = Vector2(126, 102.5)
+scale = Vector2(0.152308, 0.182216)
+sprite_frames = SubResource("SpriteFrames_lrufg")
+animation = &"accesa_fissa"
+
 [node name="Hotspot_Valigia" type="Area2D" parent="."]
 script = ExtResource("3_o56ho")
 
@@ -43,14 +86,72 @@ script = ExtResource("3_o56ho")
 position = Vector2(123.5, 304)
 shape = SubResource("RectangleShape2D_vuaql")
 
+[node name="Wall_Obstacle" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall_Obstacle"]
+polygon = PackedVector2Array(-2, 2, 3, 281, 144, 261, 146, 285, 354, 312, 462, 284, 503, 272, 504, 292, 581, 291, 612, 280, 637, 280, 639, 80, 640, 2)
+
 [node name="Hotspot_telefono" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot_telefono"]
 position = Vector2(260.5, 192.5)
 shape = SubResource("RectangleShape2D_pl2ev")
 
-[node name="Wall_Obstacle" type="StaticBody2D" parent="."]
+[node name="Hotspot_Nota" type="Area2D" parent="."]
+position = Vector2(240, 176)
 
-[node name="Wall_bed_collision" type="CollisionShape2D" parent="Wall_Obstacle"]
-position = Vector2(312.5, 157.5)
-shape = SubResource("RectangleShape2D_4qhom")
+[node name="Sprite_Nota" type="Sprite2D" parent="Hotspot_Nota"]
+visible = false
+position = Vector2(20.5, 17)
+scale = Vector2(1.65625, 1)
+texture = ExtResource("6_xar5k")
+
+[node name="Collisione_Nota" type="CollisionShape2D" parent="Hotspot_Nota"]
+position = Vector2(21, 17)
+shape = SubResource("RectangleShape2D_tkqrb")
+
+[node name="Hotspot_Phon" type="Area2D" parent="."]
+position = Vector2(35, 294)
+
+[node name="Sprite_Phon" type="Sprite2D" parent="Hotspot_Phon"]
+position = Vector2(2.625, 1.50002)
+scale = Vector2(0.789062, 0.843749)
+texture = ExtResource("9_atssx")
+
+[node name="Collision_Phon" type="CollisionShape2D" parent="Hotspot_Phon"]
+position = Vector2(6, 2)
+shape = SubResource("RectangleShape2D_uq8jj")
+
+[node name="Hotspot_Cavi" type="Area2D" parent="."]
+position = Vector2(100, 238)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hotspot_Cavi"]
+position = Vector2(-0.500001, -4.5)
+scale = Vector2(1.03125, 0.96875)
+texture = ExtResource("11_vydir")
+
+[node name="Collision_Cavi" type="CollisionShape2D" parent="Hotspot_Cavi"]
+position = Vector2(0.25, -4)
+shape = SubResource("RectangleShape2D_uniu7")
+
+[node name="Alex_Character" parent="." instance=ExtResource("2_y42of")]
+position = Vector2(296, 328)
+
+[node name="HotSpot_Zerbino_uscita" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="HotSpot_Zerbino_uscita"]
+position = Vector2(505, 326)
+scale = Vector2(2.3125, 1.9375)
+texture = ExtResource("12_8q7jc")
+
+[node name="CollisionZerbino" type="CollisionShape2D" parent="HotSpot_Zerbino_uscita"]
+position = Vector2(506.5, 337.5)
+shape = SubResource("RectangleShape2D_obm5j")
+
+[connection signal="input_event" from="Hotspot_Finestra" to="." method="_on_hotspot_finestra_input_event"]
+[connection signal="input_event" from="Hotspot_Valigia" to="." method="_on_hotspot_valigia_input_event"]
+[connection signal="input_event" from="Hotspot_telefono" to="." method="_on_hotspot_telefono_input_event"]
+[connection signal="input_event" from="Hotspot_Nota" to="." method="_on_hotspot_nota_input_event"]
+[connection signal="input_event" from="Hotspot_Phon" to="." method="_on_hotspot_phon_input_event"]
+[connection signal="input_event" from="Hotspot_Cavi" to="." method="_on_hotspot_cavi_input_event"]
+[connection signal="input_event" from="HotSpot_Zerbino_uscita" to="." method="_on_hot_spot_zerbino_uscita_input_event"]

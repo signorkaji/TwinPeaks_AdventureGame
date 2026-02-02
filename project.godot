@@ -17,7 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DialogUi="*res://dialog_ui.tscn"
 GlobalGame="*res://GlobalGame.gd"
+InventoryUi="*res://inventory_ui.tscn"
+TooltipUi="*res://tooltip_ui.tscn"
 
 [display]
 
